@@ -4,7 +4,8 @@ const presets = [
 ];
 
 const plugins = [
-    '@babel/plugin-proposal-class-properties'
+    '@babel/plugin-proposal-class-properties',
+    'transform-rebem-jsx'
 ];
 
 module.exports = {

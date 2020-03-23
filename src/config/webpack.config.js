@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 const projectRoot = path.resolve(__dirname, '..', '..');
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -44,14 +45,24 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             React: 'react'
-        })
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+                REBEM_ELEM_DELIM: JSON.stringify('-'),
+                REBEM_MOD_DELIM: JSON.stringify('_')
+            }
+        }),
+        new Dotenv()
     ],
     
     resolve: {
         alias: {
             Route: path.resolve(projectRoot, 'src', 'app', 'route'),
             Component: path.resolve(projectRoot, 'src', 'app', 'component'),
-            Style: path.resolve(projectRoot, 'src', 'app', 'style')
+            Style: path.resolve(projectRoot, 'src', 'app', 'style'),
+            Util: path.resolve(projectRoot, 'src', 'app', 'util'),
+            Request: path.resolve(projectRoot, 'src', 'app', 'request')
         },
         extensions: ['.js', '.scss']
     },

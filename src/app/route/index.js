@@ -5,8 +5,6 @@ import { createBrowserHistory } from 'history';
 
 import HomePage from 'Route/HomePage';
 
-import Header from 'Component/Header';
-
 const BEFORE_ITEMS_TYPE = 'BEFORE_ITEMS_TYPE';
 const AFTER_ITEMS_TYPE = 'AFTER_ITEMS';
 const SWITCH_ITEMS_TYPE = 'SWITCH_ITEMS_TYPE';
@@ -14,12 +12,7 @@ const SWITCH_ITEMS_TYPE = 'SWITCH_ITEMS_TYPE';
 export const history = createBrowserHistory({ basename: '/' });
 
 class AppRouter extends PureComponent {
-    [BEFORE_ITEMS_TYPE] = [
-        {
-            component: <Header />,
-            position: 10
-        }
-    ];
+    [BEFORE_ITEMS_TYPE] = [];
 
     [SWITCH_ITEMS_TYPE] = [
         {
